@@ -1,0 +1,31 @@
+﻿@model Pizza
+@{
+    ViewData["Title"] = "Dettagli della Pizza";
+}
+
+<h1>Dettagli della Pizza</h1>
+<div class="pizza-details">
+    <h2>@Model.Name</h2>
+    <img src="@Model.Image" alt="@Model.Name" class="pizza-image" />
+    <p>@Model.Overview</p>
+    <p><strong>Prezzo:</strong> @Model.Price €</p>
+    <div>
+        <p>Categoria: @Model.Category.Name</p>
+    </div>
+    <div class="row">
+        <div class="col">
+            Ingredienti:
+            <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                @foreach (var ingredient in Model.Ingredients)
+                {
+                    <div style="background-color: #AAAAAA; display: flex; justify-content: center; align-items: center;
+                            border-radius: 3px; border-style: solid; border-color: #AAAAAA; padding: 2px;">
+                        @ingredient.Name
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <a asp-controller="Pizza" asp-action="Index" class="btn btn-primary">Torna alla lista delle pizze</a>
+</div>
+

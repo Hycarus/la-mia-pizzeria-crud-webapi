@@ -1,0 +1,79 @@
+﻿@model List<Pizza>
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<section class="menu-section">
+    <h2>Il nostro Menu</h2>
+    <a asp-action="Create" class="btn btn-primary mb-3">Crea Nuova Pizza</a>
+    <div class="menu-items">
+        @if (Model == null || !Model.Any())
+        {
+            <p>Non sono presenti pizze sul nostro menu</p>
+        }
+        else
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Descrizione</th>
+                        <th>Prezzo</th>
+                        <th>Immagine</th>
+                        <th>Categorie</th>
+                        <th>Azioni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var pizza in Model)
+                    {
+                        <tr>
+                            <td>@pizza.Name</td>
+                            <td>@pizza.Overview</td>
+                            <td>@pizza.Price €</td>
+                            <td><img src="@pizza.Image" alt="@pizza.Name" style="max-width: 50px;" /></td>
+                            <td>@pizza.Category.Name</td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@pizza.Id" class="btn btn-info">Dettagli</a>
+                                <a asp-action="Edit" asp-route-id="@pizza.Id" class="btn btn-warning">Modifica</a>
+                                <button data-action-url="@Url.Action("Delete", "Pizza", new { id = pizza.Id })" class="btn btn-danger" type="button" data-id="@pizza.Id" data-name="@pizza.Name" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                    Cancella
+                                </button>
+                                @*<form asp-controller="Pizza" asp-action="Delete" asp-route-id="@pizza.Id" method="post" >
+                                    @Html.AntiForgeryToken()
+                                    <button class="btn btn-danger" type="submit">
+                                        Cancella
+                                    </button>
+                                </form>*@
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</section>
+
+<div id="deleteModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                
+                <form id="itemForm" action="" method="post">
+                    <input type="hidden" id="itemId" name="id" value="" />
+                    <div class="form-group mb-3">
+                        <input type="hidden" class="form-control" id="itemName" name="name" />
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                    <button type="submit" class="btn btn-danger">Cancella definitivamente</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
