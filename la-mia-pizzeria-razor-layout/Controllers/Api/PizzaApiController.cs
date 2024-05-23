@@ -19,7 +19,7 @@ namespace la_mia_pizzeria_static.Controllers.Api
         [HttpGet]
         public IActionResult GetPizzasByName(string filter = "")
         {
-            var pizzas = PizzaManager.GetAllPizzas().Where(p => p.Name.ToLower().Contains(filter));
+            var pizzas = PizzaManager.GetAllPizzas().Where(p => p.Name.ToLower().Contains(filter.ToLower())).ToList();
             if (pizzas == null)
                 return NotFound();
             else
