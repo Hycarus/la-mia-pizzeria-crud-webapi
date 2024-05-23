@@ -40,41 +40,31 @@ namespace la_mia_pizzeria_static.Controllers.Api
         [HttpPost]
         public IActionResult PostPizza([FromBody] PizzaFormModel data)
         {
-            using (PizzaContext context = new())
-            {
-                PizzaManager.InsertPizza(data.Pizza, data.SelectedIngredients);
-                return Ok();
-            }
-
+            PizzaManager.InsertPizza(data.Pizza, data.SelectedIngredients);
+            return Ok();
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
         public IActionResult PutPizza(int id, [FromBody] PizzaFormModel data)
         {
-            using(PizzaContext context = new())
+            var pizzaToEdit = PizzaManager.UpdatePizza(id, data.Pizza, data.SelectedIngredients);
+            if (pizzaToEdit != null)
             {
-                var pizzaToEdit = PizzaManager.UpdatePizza(id, data.Pizza, data.SelectedIngredients);
-                if (pizzaToEdit != null)
-                {
-                    return Ok(pizzaToEdit);
-                }
-                else
-                    return NotFound();
+                return Ok(pizzaToEdit);
             }
+            else
+                return NotFound();
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public IActionResult DeletePizza(int id)
         {
-            using (PizzaContext context = new())
-            {
-                if (PizzaManager.DeletePizza(id))
-                    return Ok();
-                else
-                    return NotFound();
-            }
+            if (PizzaManager.DeletePizza(id))
+                return Ok();
+            else
+                return NotFound();
         }
     }
 }
