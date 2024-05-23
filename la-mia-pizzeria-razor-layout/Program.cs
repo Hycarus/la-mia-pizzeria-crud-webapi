@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using la_mia_pizzeria_static.Data;
 using la_mia_pizzeria_static.Models;
 using Microsoft.AspNetCore.Identity;
@@ -17,6 +18,7 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+        builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
         builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
         builder.Services.AddDbContext<PizzaContext>();
 

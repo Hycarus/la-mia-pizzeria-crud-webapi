@@ -11391,11 +11391,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/mirko/boolean/DotNet/la-mia-pizzeria-crud-mvc/la-mia-pizzeria-razor-layout/la-mia-pizzeria-razor-layout.csproj",
+      "projectUniqueName": "/Users/mirko/boolean/DotNet/la-mia-pizzeria-crud-webapi/la-mia-pizzeria-razor-layout/la-mia-pizzeria-razor-layout.csproj",
       "projectName": "la-mia-pizzeria-razor-layout",
-      "projectPath": "/Users/mirko/boolean/DotNet/la-mia-pizzeria-crud-mvc/la-mia-pizzeria-razor-layout/la-mia-pizzeria-razor-layout.csproj",
+      "projectPath": "/Users/mirko/boolean/DotNet/la-mia-pizzeria-crud-webapi/la-mia-pizzeria-razor-layout/la-mia-pizzeria-razor-layout.csproj",
       "packagesPath": "/Users/mirko/.nuget/packages/",
-      "outputPath": "/Users/mirko/boolean/DotNet/la-mia-pizzeria-crud-mvc/la-mia-pizzeria-razor-layout/obj/",
+      "outputPath": "/Users/mirko/boolean/DotNet/la-mia-pizzeria-crud-webapi/la-mia-pizzeria-razor-layout/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/mirko/.nuget/NuGet/NuGet.Config"
@@ -11417,11 +11417,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -11478,7 +11473,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.406/RuntimeIdentifierGraph.json"
       }
     }
   }

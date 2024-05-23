@@ -25,9 +25,11 @@
   <ItemGroup>
     <None Remove="Views\Pizza\" />
     <None Remove="Data\" />
+    <None Remove="Controllers\Api\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Pizza\" />
     <Folder Include="Data\" />
+    <Folder Include="Controllers\Api\" />
   </ItemGroup>
 </Project>

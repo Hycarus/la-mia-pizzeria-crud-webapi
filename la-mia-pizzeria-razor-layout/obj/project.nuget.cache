@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "m5JXxBfZwO465CKwdsXy4AxIA8MpaOYRJK6+KcWFQSw5yB6GfvZIUV6uSa4TBxm+b8AbT9+jvOzEZhGS0vO/TA==",
+  "dgSpecHash": "pV5my+3Wf0P2niQfO+4bwKy5UKvlsAyvzgWoW0LRumZJKZrZ0pspMifFZTVAi9WfkSWFcIjGWe2OU86GnOQAAg==",
   "success": true,
-  "projectFilePath": "/Users/mirko/boolean/DotNet/la-mia-pizzeria-crud-mvc/la-mia-pizzeria-razor-layout/la-mia-pizzeria-razor-layout.csproj",
+  "projectFilePath": "/Users/mirko/boolean/DotNet/la-mia-pizzeria-crud-webapi/la-mia-pizzeria-razor-layout/la-mia-pizzeria-razor-layout.csproj",
   "expectedPackageFiles": [
     "/Users/mirko/.nuget/packages/humanizer/2.14.1/humanizer.2.14.1.nupkg.sha512",
     "/Users/mirko/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
