@@ -46,7 +46,8 @@ namespace la_mia_pizzeria_static.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Categories = new SelectList(data.Categories, "Id", "Name");
+                //ViewBag.Categories = new SelectList(data.Categories, "Id", "Name");
+                data.Categories = PizzaManager.GetAllCategories();
                 data.CreateIngredients();
                 return View("Create", data);
             }
