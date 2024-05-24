@@ -17,36 +17,44 @@ namespace la_mia_pizzeria_static.Controllers.Api
     {
         // GET: api/values
         [HttpGet]
-        public IActionResult GetPizzasByName(string filter = "")
+        public IActionResult GetAllPizzas(string? name)
         {
-            var pizzas = PizzaManager.GetAllPizzas().Where(p => p.Name.ToLower().Contains(filter.ToLower())).ToList();
-            if (pizzas == null)
-                return NotFound();
-            else
-                return Ok(pizzas);
+            if (name == null)
+                return Ok(PizzaManager.GetAllPizzas());
+            return Ok(PizzaManager.GetPizzasByName(name));
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public IActionResult GetPizza(int id)
+        public IActionResult GetPizzaById(int id)
         {
-            var pizza = PizzaManager.GetPizza(id, true);
+            var pizza = PizzaManager.GetPizza(id);
             if (pizza == null)
                 return NotFound();
             return Ok(pizza);
         }
 
+        [HttpGet("{name}")]
+        public IActionResult GetPizzaByName(string name)
+        {
+            var pizza = PizzaManager.GetPizzasByName(name);
+            if (pizza == null)
+                return NotFound("ERRORE");
+            return Ok(pizza);
+        }
+
+
         // POST api/values
         [HttpPost]
-        public IActionResult PostPizza([FromBody] PizzaFormModel data)
+        public IActionResult CreatePizza([FromBody] Pizza pizza)
         {
-            PizzaManager.InsertPizza(data.Pizza, data.SelectedIngredients);
+            PizzaManager.InsertPizza(pizza, null);
             return Ok();
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public IActionResult PutPizza(int id, [FromBody] PizzaFormModel data)
+        public IActionResult UpdatePizza(int id, [FromBody] PizzaFormModel data)
         {
             var pizzaToEdit = PizzaManager.UpdatePizza(id, data.Pizza, data.SelectedIngredients);
             if (pizzaToEdit != null)

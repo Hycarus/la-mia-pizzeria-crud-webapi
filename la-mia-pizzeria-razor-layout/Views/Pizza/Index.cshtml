@@ -32,7 +32,7 @@
                             <td>@pizza.Overview</td>
                             <td>@pizza.Price €</td>
                             <td><img src="@pizza.Image" alt="@pizza.Name" style="max-width: 50px;" /></td>
-                            <td>@pizza.Category.Name</td>
+                            <td>@pizza.Category?.Name</td>
                             <td>
                                 <a asp-action="Details" asp-route-id="@pizza.Id" class="btn btn-info">Dettagli</a>
                                 <a asp-action="Edit" asp-route-id="@pizza.Id" class="btn btn-warning">Modifica</a>

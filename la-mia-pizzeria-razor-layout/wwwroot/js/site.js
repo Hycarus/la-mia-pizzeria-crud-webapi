@@ -1,7 +1,7 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
     var itemModal = document.getElementById('deleteModal');
     var itemForm = document.getElementById('itemForm');
-    var modalTitle = itemModal.querySelector('.modal-title');
+    var modalTitle = document.querySelector('.modal-title');
     var itemIdInput = document.getElementById('itemId');
     var itemNameInput = document.getElementById('itemName');
 

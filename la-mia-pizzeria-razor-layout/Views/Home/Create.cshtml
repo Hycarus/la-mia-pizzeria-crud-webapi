@@ -1,0 +1,55 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col"><h1>Crea pizza</h1></div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <form onsubmit="creaPizza(event)" method="post">
+                <div class="mb-3">
+                    <strong>Nome:</strong>
+                    <input id="PizzaName" type="text" class="d-block w-100" />
+                </div>
+                <div class="mb-3">
+                    <strong>Descrizione:</strong>
+                    <input id="PizzaOverview" type="text" class="d-block w-100 is-invalid" />
+                </div>
+                <div class="mb-3">
+                    <strong>Prezzo:</strong>
+                    <input id="PizzaPrice" type="text" class="d-block w-100 is-invalid" />
+                </div>
+                <div class="mb-3">
+                    <strong>Immagine:</strong>
+                    <input id="PizzaImage" type="text" class="d-block w-100 is-invalid" />
+                </div>
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-success" value="Crea" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+    function creaPizza(evt) {
+        evt.preventDefault();
+        var name = document.getElementById('PizzaName').value;
+        var overview = document.getElementById('PizzaOverview').value;
+        var price = document.getElementById('PizzaPrice').value;
+        var image = document.getElementById('PizzaImage').value;
+
+        axios.post('/api/PizzaApi/CreatePizza', {
+            name: name,
+            overview: overview,
+            price: price,
+            image: image
+        })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+</script>

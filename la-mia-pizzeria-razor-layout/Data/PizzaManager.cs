@@ -17,6 +17,12 @@ namespace la_mia_pizzeria_static.Data
             return db.Pizzas.Include(c => c.Category).ToList();
         }
 
+        public static List<Pizza> GetPizzasByName(string name)
+        {
+            using PizzaContext db = new PizzaContext();
+            return db.Pizzas.Where(p => p.Name.ToLower().Contains(name.ToLower())).ToList();
+        }
+
         public static List<Category> GetAllCategories()
         {
             using PizzaContext db = new PizzaContext();

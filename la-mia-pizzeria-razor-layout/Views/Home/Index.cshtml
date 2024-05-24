@@ -19,6 +19,87 @@
             </div>
         </section>
     </main>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-center align-items-center">
+                    <h1>Lista pizze</h1>
+                    <input class="js_search ms-5" placeholder="Cerca per nome" />
+                </div>
+            </div>
+        </div>
+        <div class="row js_no_pizza d-none">
+            <div class="col">
+                <h3>Non ci sono pizze</h3>
+            </div>
+        </div>
+        <div class="row js_pizza_table d-none">
+        </div>
+        <div class="row">
+            <div class="col">
+                <a href="@Url.Action("Create", "Home")" class="btn btn-primary">Crea Pizza</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        function loadList(nameFilter) {
+            axios.get('api/PizzaApi/GetAllPizzas',
+                {
+                    params:
+                    {
+                        name: nameFilter
+                    }
+                }).then((res) => {
+                    if (res.data.length == 0)
+                    {
+                        document.querySelector('.js_no_pizza').classList.remove('d-none');
+                        document.querySelector('.js_pizza_table').classList.add('d-none');
+                    }
+                    else {
+                        document.querySelector('.js_no_pizza').classList.add('d-none');
+                        var pizzaTable = document.querySelector('.js_pizza_table');
+                        pizzaTable.classList.remove('d-none');
+
+                        pizzaTable.innerHTML = '';
+                        res.data.forEach((pizza) => {
+                            pizzaTable.innerHTML += `
+                                <div class="col-4">
+                                    <div>
+                                        <img class="w-100" src="${pizza.image}" />
+                                    <div/>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">${pizza.name}</h5>
+                                            <p class="card-text">${pizza.overview}</p>
+                                        </div>
+                                        <div class="btn btn-danger" onclick="deleteById(${pizza.id})">Elimina</div>
+                                    </div>
+                                </div>`;
+                        });
+                    }
+                });
+            }
+
+        function deleteById(id) {
+            axios.delete("/api/PizzaApi/DeletePizza/" + id)
+                .then((res) => {
+                    loadList('');
+                });
+        }
+
+        loadList('');
+
+        function search() {
+
+            console.log(this.value);
+            loadList(this.value);
+        }
+
+        document.querySelector('.js_search').addEventListener('keyup', search)
+    </script>
     @Html.Partial("_LayoutFooter")
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
